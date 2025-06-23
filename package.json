@@ -1,0 +1,28 @@
+{
+  "name": "namaste_react",
+  "version": "1.0.0",
+  "description": "Preparation for React from Namaste-React!",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LakshmanYadavilli/Namaste-React.git"
+  },
+  "author": "Venkat Lakshman Yadavilli",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LakshmanYadavilli/Namaste-React/issues"
+  },
+  "homepage": "https://github.com/LakshmanYadavilli/Namaste-React#readme",
+  "devDependencies": {
+    "parcel": "^2.15.4"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
+}
