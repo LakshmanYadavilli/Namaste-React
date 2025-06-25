@@ -1,0 +1,15 @@
+#header {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #ccc;
+}
+
+#nav {
+  display: flex;
+  justify-content: space-evenly;
+  list-style-type: none;
+}
+
+.navItem {
+  margin: 0px 10px;
+}
