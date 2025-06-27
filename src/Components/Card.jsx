@@ -1,21 +1,26 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
-// import { fa-star } from '@awesome.me/kit-KIT_CODE/icons'
+import "./Card.css";
+import { IMG_URL_PREFIX } from "../utils/constants";
 
 const Card = ({ restaurant }) => {
-  const { name, cloudinaryImageId, cuisines, avgRatingString, sla } =
-    restaurant.info || {};
+  const {
+    name,
+    cloudinaryImageId,
+    cuisines,
+    avgRatingString,
+    sla,
+    costForTwo,
+  } = restaurant.info || {};
+
   return (
-    <div id="card">
+    <div className="card">
       <img
-        src={
-          "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300/" +
-          cloudinaryImageId
-        }
+        src={IMG_URL_PREFIX + cloudinaryImageId}
         alt={name || "restuarant"}
       />
-      <h1>{name}</h1>
-      <h3>
+      <h3>{name}</h3>
+      <div className="rating">
         <FaStar
           size={5}
           style={{
@@ -28,9 +33,14 @@ const Card = ({ restaurant }) => {
             padding: "2px",
           }}
         />
-        {avgRatingString}
-        {" • "} {sla.slaString}
-      </h3>
+        <h4 className="rating-text">
+          {avgRatingString}
+          {" • "} {sla.slaString}
+        </h4>
+      </div>
+
+      <h4 className="restuarant-cuisines">{cuisines.join(", ")}</h4>
+      <h4>{costForTwo}</h4>
     </div>
   );
 };
