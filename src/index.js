@@ -1,9 +1,9 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./Components/App.jsx";
 // import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import About from "./Components/About.jsx";
+const LazyAbout = lazy(() => import("./Components/About.jsx"));
 import Home from "./Components/Home.jsx";
 import RestuarantMenu from "./Components/RestuarantMenu.jsx";
 
@@ -16,7 +16,14 @@ const Router = createBrowserRouter([
     element: <App />,
     children: [
       { path: "/", element: <Home /> },
-      { path: "/about", element: <About /> },
+      {
+        path: "/about",
+        element: (
+          <Suspense fallback={<h1>Loading About page....</h1>}>
+            <LazyAbout />
+          </Suspense>
+        ),
+      },
       { path: "/restaurant/menu/:res_id", element: <RestuarantMenu /> },
       { path: "*", element: <h1>404 Not Found</h1> },
     ],

@@ -1,44 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import useGetRestaurantMenu from "../utils/useGetRestaurantMenu";
 
 const RestuarantMenu = () => {
-  const [resMenu, setResMenu] = useState([]);
   const { res_id } = useParams();
-
-  useEffect(() => {
-    const fetchMenu = async () => {
-      const data = await fetch(
-        "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=19.07480&lng=72.88560&restaurantId=" +
-          res_id
-      );
-      const res = await data.json();
-      console.log("res:::", res);
-
-      setResMenu(
-        res?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards
-      );
-    };
-    fetchMenu();
-  }, []);
+  const resMenu = useGetRestaurantMenu(res_id);
 
   if (resMenu?.length === 0) return <div>RestuarantMenu</div>;
 
-  console.log("resMenu:::", resMenu.length);
-  //  ?.card?.card?.itemCards
-
-  /*
-  ?.map((itemcard, index) => (
-            <div key={itemcard.card.info.id}>
-              <h1>venkat</h1>
-              <h3>{itemcard.card.info.name}</h3>
-              <p>Price: {itemcard.card.info.price / 100}</p>
-              <p>Description: {itemcard.card.info.description}</p>
-            </div>
-          ))
-   */
-  // resMemu->regular.cards
-  //1stLevel->regular.cards.slice(2)[0].card.card.title
-  //2ndLevel->regular.cards.slcie(2)[0].card.card.itemCards[0]
   return (
     <div>
       <h1 style={{ color: "red" }}>Catagories</h1>

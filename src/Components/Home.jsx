@@ -1,35 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, use } from "react";
 
 import { FaSearch } from "react-icons/fa";
 import Shimmer from "./Shimmer";
 import CardContainer from "./CardContainer";
+import useGetRestaurants from "../utils/useGetRestaurants";
 const Home = () => {
   const [filterData, setFilterData] = useState([]);
-  const [data, setData] = useState([]);
+
   const [serachValue, setSearchValue] = useState("");
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await fetch(
-          "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.07480&lng=72.88560"
-        );
-        const res = await data.json();
-        setData(
-          res?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-            ?.restaurants
-        );
-        setFilterData(
-          res?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-            ?.restaurants
-        );
-      } catch (error) {
-        console.error("error:::", error);
-      }
-    };
-    fetchData();
-  }, []);
-
+  const data = useGetRestaurants(setFilterData);
   const handleTopRatedRestaurants = () => {
     const topRatedRestaurants = data.filter(
       (restaurant) => restaurant.info.avgRating >= 4.5
