@@ -2,6 +2,7 @@ import React from "react";
 import { FaStar } from "react-icons/fa";
 import "./Card.css";
 import { IMG_URL_PREFIX } from "../utils/constants";
+import { Link } from "react-router-dom";
 
 const Card = ({ restaurant }) => {
   const {
@@ -11,10 +12,11 @@ const Card = ({ restaurant }) => {
     avgRatingString,
     sla,
     costForTwo,
+    id,
   } = restaurant.info || {};
 
   return (
-    <div className="card">
+    <Link className="card" to={`/restaurant/menu/${id}`}>
       <img
         src={IMG_URL_PREFIX + cloudinaryImageId}
         alt={name || "restuarant"}
@@ -41,7 +43,7 @@ const Card = ({ restaurant }) => {
 
       <h4 className="restuarant-cuisines">{cuisines.join(", ")}</h4>
       <h4>{costForTwo}</h4>
-    </div>
+    </Link>
   );
 };
 
