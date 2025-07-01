@@ -1,36 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useGetRestaurantMenu from "../utils/useGetRestaurantMenu";
+import RestaurantMenuCatagoryCard from "./RestaurantMenuCatagoryCard";
 
 const RestuarantMenu = () => {
   const { res_id } = useParams();
+  const [openedCatagory, setOpenedCatagory] = useState(0);
+  console.log("openedCatagory:::", openedCatagory);
+
   const resMenu = useGetRestaurantMenu(res_id);
 
   if (resMenu?.length === 0) return <div>RestuarantMenu</div>;
 
   return (
-    <div>
-      <h1 style={{ color: "red" }}>Catagories</h1>
+    <div className="w-1/2 mx-auto">
+      <h1 className="text-red-500 font-bold text-2xl m-3">Catagories</h1>
       {resMenu.slice(2).map((item, idx) => {
         if (!item?.card?.card?.title || !item?.card?.card?.itemCards)
           return null; // Skip if title or itemCards are not available
+        console.log("idx:::", idx);
         return (
-          <div key={idx}>
-            <h2 style={{ color: "blue" }}>{item.card.card.title}</h2>
-            <h2>Items:</h2>
-            {item.card?.card?.itemCards?.map((itemcard, index) => {
-              if (!itemcard?.card?.info) return null; // Skip if info is not available
-              const { id, name, price, description } = itemcard?.card?.info;
-              return (
-                <div key={id}>
-                  <h3>{name}</h3>
-                  <p>Price: {price / 100}</p>
-                  {description && <p>Description: {description}</p>}
-                </div>
-              );
-            })}
-          </div>
-        );
+          <RestaurantMenuCatagoryCard
+            key={idx}
+            item={item}
+            isOpened={idx === openedCatagory}
+            setOpenedCatagory={setOpenedCatagory}
+            idx={idx}
+          />
+        ); // Use the component to render each category
       })}
     </div>
   );
