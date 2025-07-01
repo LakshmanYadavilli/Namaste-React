@@ -1,6 +1,6 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
-import "./Card.css";
+// import "./Card.css";
 import { IMG_URL_PREFIX } from "../utils/constants";
 import { Link } from "react-router-dom";
 
@@ -16,13 +16,17 @@ const Card = ({ restaurant }) => {
   } = restaurant.info || {};
 
   return (
-    <Link className="card" to={`/restaurant/menu/${id}`}>
+    <Link
+      to={`/restaurant/menu/${id}`}
+      className="w-1/5 p-3 hover:bg-gray-500 rounded-lg shadow-lg"
+    >
       <img
+        className="w-[96%] h-[200px] rounded-lg shadow-lg "
         src={IMG_URL_PREFIX + cloudinaryImageId}
         alt={name || "restuarant"}
       />
-      <h3>{name}</h3>
-      <div className="rating">
+      <h3 className="font-bold p-2">{name}</h3>
+      <div className="flex items-center">
         <FaStar
           size={5}
           style={{
@@ -35,7 +39,7 @@ const Card = ({ restaurant }) => {
             padding: "2px",
           }}
         />
-        <h4 className="rating-text">
+        <h4 className="p-2">
           {avgRatingString}
           {" • "} {sla.slaString}
         </h4>

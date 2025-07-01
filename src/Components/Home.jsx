@@ -38,30 +38,40 @@ const Home = () => {
   }
   return (
     <div id="body">
-      <div id="searchContainer">
-        <input
-          id="searchInput"
-          type="text"
-          placeholder="Search for food items"
-          value={serachValue}
-          onChange={(e) => setSearchValue(e.target.value)}
-        />
-        <div
-          style={{
-            borderLeft: "2px solid grey",
-            height: "100%",
-            display: "flex",
-            alignItems: "center",
-            padding: "5px",
-          }}
-        >
-          <FaSearch onClick={(e) => handleSearch(e)} />
+      <div className="flex p-3 items-center">
+        <div id="searchContainer">
+          <input
+            id="searchInput"
+            type="text"
+            placeholder="Search for food items"
+            value={serachValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+          />
+          <div
+            style={{
+              borderLeft: "2px solid grey",
+              height: "100%",
+              display: "flex",
+              alignItems: "center",
+              padding: "5px",
+            }}
+          >
+            <FaSearch onClick={(e) => handleSearch(e)} />
+          </div>
         </div>
+        <button
+          className="bg-blue-300 font-bold p-2 rounded-lg ml-3 cursor-pointer"
+          onClick={() => setFilterData(data)}
+        >
+          All Restuarants
+        </button>
+        <button
+          className="bg-blue-300 font-bold p-2 rounded-lg ml-3 cursor-pointer"
+          onClick={() => handleTopRatedRestaurants()}
+        >
+          Top Rated Restuarants
+        </button>
       </div>
-      <button onClick={() => setFilterData(data)}>All Restuarants</button>
-      <button onClick={() => handleTopRatedRestaurants()}>
-        Top Rated Restuarants
-      </button>
 
       {filterData?.length !== 0 ? (
         <CardContainer filterData={filterData} />
