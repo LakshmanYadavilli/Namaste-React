@@ -6,7 +6,7 @@ import Card from "./Card";
 const CardContainer = ({ filterData: restaurants }) => {
   return (
     <div className="flex flex-wrap p-3">
-      {restaurants.map((restaurant) => (
+      {restaurants?.map((restaurant) => (
         <Card key={restaurant.info.id} restaurant={restaurant} />
       ))}
     </div>

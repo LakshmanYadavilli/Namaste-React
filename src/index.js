@@ -7,6 +7,11 @@ const LazyAbout = lazy(() => import("./Components/About.jsx"));
 import Home from "./Components/Home.jsx";
 import RestuarantMenu from "./Components/RestuarantMenu.jsx";
 
+import { Provider } from "react-redux";
+import store from "./utils/store.js";
+import CounterContextProvider from "./utils/context.js";
+import Cart from "./Components/Cart.jsx";
+
 // const h1Element = React.createElement("h1", { id: "heading" }, "Hello World!");
 const rootElement = document.getElementById("root");
 
@@ -25,6 +30,7 @@ const Router = createBrowserRouter([
         ),
       },
       { path: "/restaurant/menu/:res_id", element: <RestuarantMenu /> },
+      { path: "/cart", element: <Cart /> },
       { path: "*", element: <h1>404 Not Found</h1> },
     ],
   },
@@ -41,4 +47,10 @@ const root = ReactDOM.createRoot(rootElement);
 //   </Router>
 // );
 
-root.render(<RouterProvider router={Router} />);
+root.render(
+  <Provider store={store}>
+    <CounterContextProvider>
+      <RouterProvider router={Router} />
+    </CounterContextProvider>
+  </Provider>
+);

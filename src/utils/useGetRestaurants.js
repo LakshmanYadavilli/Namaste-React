@@ -7,6 +7,9 @@ const useGetRestaurants = (setFilterData) => {
       try {
         const data = await fetch(RESTAURANT_API);
         const res = await data.json();
+
+        //
+
         setData(
           res?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
             ?.restaurants

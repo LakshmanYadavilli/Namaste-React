@@ -2,6 +2,7 @@ import React from "react";
 import { FaStar } from "react-icons/fa";
 // import "./Card.css";
 import { IMG_URL_PREFIX } from "../utils/constants";
+
 import { Link } from "react-router-dom";
 
 const Card = ({ restaurant }) => {
@@ -14,11 +15,12 @@ const Card = ({ restaurant }) => {
     costForTwo,
     id,
   } = restaurant.info || {};
+  console.log("Card", restaurant.info);
 
   return (
     <Link
       to={`/restaurant/menu/${id}`}
-      className="w-1/5 p-3 hover:bg-gray-500 rounded-lg shadow-lg"
+      className="p-3 hover:bg-gray-500 rounded-lg shadow-lg  sm:w-1/2 md:w-1/3 lg:w-1/4 "
     >
       <img
         className="w-[96%] h-[200px] rounded-lg shadow-lg "

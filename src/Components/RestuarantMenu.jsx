@@ -6,7 +6,6 @@ import RestaurantMenuCatagoryCard from "./RestaurantMenuCatagoryCard";
 const RestuarantMenu = () => {
   const { res_id } = useParams();
   const [openedCatagory, setOpenedCatagory] = useState(0);
-  console.log("openedCatagory:::", openedCatagory);
 
   const resMenu = useGetRestaurantMenu(res_id);
 
@@ -18,7 +17,6 @@ const RestuarantMenu = () => {
       {resMenu.slice(2).map((item, idx) => {
         if (!item?.card?.card?.title || !item?.card?.card?.itemCards)
           return null; // Skip if title or itemCards are not available
-        console.log("idx:::", idx);
         return (
           <RestaurantMenuCatagoryCard
             key={idx}

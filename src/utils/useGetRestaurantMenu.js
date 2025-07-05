@@ -8,7 +8,6 @@ const useGetRestaurantMenu = (restaurantId) => {
       const data = await fetch(RESTAURANT_MENU_API + restaurantId);
 
       const res = await data.json();
-      console.log("res:::", res);
 
       setResMenu(
         res?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards
