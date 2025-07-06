@@ -1,4 +1,4 @@
-import React, { useState, useEffect, use } from "react";
+import React, { useState } from "react";
 
 import { FaSearch } from "react-icons/fa";
 import Shimmer from "./Shimmer";
@@ -49,7 +49,10 @@ const Home = () => {
             value={serachValue}
             onChange={(e) => setSearchValue(e.target.value)}
           />
-          <div className="border-l-2 border-l-gray-400 h-full p-2 cursor-pointer ">
+          <div
+            data-testid="search-btn"
+            className="border-l-2 border-l-gray-400 h-full p-2 cursor-pointer "
+          >
             <FaSearch onClick={(e) => handleSearch(e)} />
           </div>
         </div>

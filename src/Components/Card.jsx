@@ -15,10 +15,10 @@ const Card = ({ restaurant }) => {
     costForTwo,
     id,
   } = restaurant.info || {};
-  console.log("Card", restaurant.info);
 
   return (
     <Link
+      data-testid="restaurant-card"
       to={`/restaurant/menu/${id}`}
       className="p-3 hover:bg-gray-500 rounded-lg shadow-lg  sm:w-1/2 md:w-1/3 lg:w-1/4 "
     >

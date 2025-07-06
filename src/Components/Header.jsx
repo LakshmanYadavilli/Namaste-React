@@ -1,5 +1,5 @@
 import React from "react";
-import food_app_logo from "../assets/icon.png";
+
 // import "./Header.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -23,7 +23,7 @@ const Header = () => {
         </li>
         <li className="px-2">Contact</li>
         <li className="px-2">
-          <Link to="/cart">Cart</Link>({totalItems})
+          <Link to="/cart">Cart({totalItems})</Link>
         </li>
       </ul>
     </div>

@@ -6,7 +6,6 @@ import { CounterContext } from "../utils/context";
 const About = () => {
   // const dispatch = useDispatch();
   const value = useContext(CounterContext);
-  console.log("value", value);
   const { state, dispatch } = value;
 
   const { counter } = state;

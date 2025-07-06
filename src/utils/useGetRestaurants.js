@@ -6,6 +6,7 @@ const useGetRestaurants = (setFilterData) => {
     const fetchData = async () => {
       try {
         const data = await fetch(RESTAURANT_API);
+
         const res = await data.json();
 
         //

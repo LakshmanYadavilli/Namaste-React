@@ -1,15 +1,17 @@
 import React from "react";
-import "./Shimmer.css";
 
 const Shimmer = () => {
   return (
     <div>
-      <div className="shimmer-header"></div>
-      <div className="shimmer-card-container">
+      <div className="w-full h-[200px] bg-gray-200"></div>
+      <div className="flex flex-wrap">
         {Array(10)
           .fill("")
           .map((e, index) => (
-            <div className="shimmer-card" key={index}></div>
+            <div
+              className="h-[500px] w-[23%] m-[0.5%] bg-gray-200 rounded-sm"
+              key={index}
+            ></div>
           ))}
       </div>
     </div>
